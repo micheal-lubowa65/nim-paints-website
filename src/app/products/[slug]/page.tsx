@@ -28,33 +28,35 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {/* Breadcrumb + Hero */}
-      <section className="bg-deep-forest pt-32 pb-20 relative">
+      <section className="bg-deep-forest pt-28 pb-14 relative">
         <div className="absolute inset-0 opacity-10">
           <div className="w-full h-full bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-from),transparent)] from-leaf-green"></div>
         </div>
         <div className="max-w-container-max mx-auto px-gutter relative z-10">
-          <div className="flex items-center gap-3 text-surface-variant/50 font-label-md uppercase tracking-wider text-xs mb-8">
+          <div className="flex items-center gap-3 text-surface-variant/50 font-label-md uppercase tracking-wider text-xs mb-6">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span className="material-symbols-outlined text-sm">chevron_right</span>
             <Link href="/products" className="hover:text-white transition-colors">Products</Link>
             <span className="material-symbols-outlined text-sm">chevron_right</span>
             <span className="text-white/80">{product.title}</span>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className={`inline-block ${product.badgeColor} bg-white/10 px-4 py-1.5 rounded-sm text-xs font-bold uppercase tracking-widest mb-6`}>
+              <span className={`inline-block ${product.category === "Exterior" ? "text-royal-purple bg-royal-purple/10" : product.badgeColor + " bg-white/10"} px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5`}>
                 {product.badge}
               </span>
-              <h1 className="font-display-lg text-display-lg text-white mb-6 leading-[1.1]">{product.title}</h1>
-              <p className="font-body-lg text-surface-variant/80 text-lg mb-8 leading-relaxed">{product.longDesc}</p>
+              <h1 className="font-display-lg text-4xl md:text-5xl text-white mb-5 leading-[1.1]">{product.title}</h1>
+              <p className="font-body-lg text-surface-variant/80 text-base mb-6 leading-relaxed">{product.longDesc}</p>
               <div className="flex flex-wrap gap-4">
-                <a href={`/contact?product=${product.slug}#inquiry-form`} className="inline-block bg-leaf-green text-white px-8 py-4 rounded font-label-lg hover:brightness-110 transition-all cursor-pointer">
-                  ADD TO QUOTE
+                <a href={`/contact?product=${product.slug}#inquiry-form`} className="inline-block bg-leaf-green text-white px-8 py-3 rounded-full font-bold text-sm hover:brightness-110 transition-all cursor-pointer">
+                  Request Quote
                 </a>
               </div>
             </div>
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <img src={product.img} alt={product.title} className="w-full h-full object-cover" />
+            <div className="flex justify-center">
+              <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl bg-white/5">
+                <img src={product.img} alt={product.title} className="w-full h-full object-contain" />
+              </div>
             </div>
           </div>
         </div>
