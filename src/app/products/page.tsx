@@ -102,53 +102,35 @@ export default function Products() {
             ))}
           </div>
 
-          {/* Product grid with intro card */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Intro text card */}
-            <div className="bg-[#f0f7f1] rounded-3xl p-8 flex flex-col justify-between">
-              <p className="text-deep-forest text-lg md:text-xl leading-relaxed mb-8">
-                Advanced coating systems engineered for the tropical Ugandan climate.
-              </p>
-              <Link
-                href="#all-products"
-                className="inline-flex items-center gap-2 border border-deep-forest/20 rounded-full px-5 py-2.5 text-sm font-medium text-deep-forest hover:bg-deep-forest hover:text-white transition-all w-fit"
-              >
-                Shop all products <span className="material-symbols-outlined text-base">arrow_forward</span>
-              </Link>
-            </div>
-
-            {/* Product cards - one from each category */}
+          {/* Product grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <AnimatePresence mode="popLayout">
-              {[
-                products.find(p => p.category === "Interior"),
-                products.find(p => p.category === "Exterior"),
-                products.find(p => p.category === "Textured"),
-              ].filter(Boolean).map((product) => (
+              {filteredProducts.map((product) => (
                 <motion.div
-                  key={product!.slug}
+                  key={product.slug}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  <Link href={`/products/${product!.slug}`} className="group block">
+                  <Link href={`/products/${product.slug}`} className="group block">
                     <div className="bg-[#f8f8f6] rounded-3xl p-4 mb-4 overflow-hidden">
                       <div className="relative aspect-square rounded-2xl overflow-hidden">
                         <img
-                          src={product!.img}
-                          alt={product!.title}
+                          src={product.img}
+                          alt={product.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-3 py-1 rounded-full">
-                          {product!.badge}
+                          {product.badge}
                         </span>
                       </div>
                     </div>
                     <div className="px-1">
-                      <h3 className="font-bold text-deep-forest text-base mb-1">{product!.title}</h3>
-                      <p className="text-on-surface-variant text-xs mb-2">{product!.finish}</p>
-                      <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-2">{product!.desc}</p>
+                      <h3 className="font-bold text-deep-forest text-base mb-1">{product.title}</h3>
+                      <p className="text-on-surface-variant text-xs mb-2">{product.finish}</p>
+                      <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-2">{product.desc}</p>
                       <span className="text-leaf-green text-xs font-medium mt-2 inline-block underline underline-offset-2">
                         learn more
                       </span>
@@ -161,7 +143,59 @@ export default function Products() {
         </div>
       </section>
 
-      {/* More About Us / Full Product Range */}
+      {/* More About Products */}
+      <ScrollReveal>
+        <section className="py-section-padding bg-white">
+          <div className="max-w-container-max mx-auto px-gutter">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Intro text card */}
+              <div className="bg-[#f0f7f1] rounded-3xl p-8 flex flex-col justify-between">
+                <p className="text-deep-forest text-lg md:text-xl leading-relaxed mb-8">
+                  Advanced coating systems engineered for the tropical Ugandan climate.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 border border-deep-forest/20 rounded-full px-5 py-2.5 text-sm font-medium text-deep-forest hover:bg-deep-forest hover:text-white transition-all w-fit"
+                >
+                  Shop all products <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </Link>
+              </div>
+
+              {/* 3 featured products - one from each category */}
+              {[
+                products.find(p => p.category === "Interior"),
+                products.find(p => p.category === "Exterior"),
+                products.find(p => p.category === "Textured"),
+              ].filter(Boolean).map((product) => (
+                <Link key={product!.slug} href={`/products/${product!.slug}`} className="group block">
+                  <div className="bg-[#f8f8f6] rounded-3xl p-4 mb-4 overflow-hidden">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden">
+                      <img
+                        src={product!.img}
+                        alt={product!.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-3 py-1 rounded-full">
+                        {product!.badge}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="px-1">
+                    <h3 className="font-bold text-deep-forest text-base mb-1">{product!.title}</h3>
+                    <p className="text-on-surface-variant text-xs mb-2">{product!.finish}</p>
+                    <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-2">{product!.desc}</p>
+                    <span className="text-leaf-green text-xs font-medium mt-2 inline-block underline underline-offset-2">
+                      learn more
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* More About Products - Image + Text */}
       <ScrollReveal>
         <section className="py-section-padding bg-[#f8f8f6]">
           <div className="max-w-container-max mx-auto px-gutter">
@@ -196,53 +230,6 @@ export default function Products() {
           </div>
         </section>
       </ScrollReveal>
-
-      {/* All Products Grid */}
-      <section id="all-products" className="py-section-padding bg-white">
-        <div className="max-w-container-max mx-auto px-gutter">
-          <ScrollReveal>
-            <h2 className="font-display-lg text-3xl md:text-4xl text-deep-forest mb-12 tracking-tight">
-              All Products
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredProducts.map((product, i) => (
-                <ScrollReveal key={product.slug} delay={i * 50}>
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Link href={`/products/${product.slug}`} className="group block">
-                      <div className="bg-[#f8f8f6] rounded-3xl p-4 mb-4 overflow-hidden">
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                          <img
-                            src={product.img}
-                            alt={product.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-3 py-1 rounded-full">
-                            {product.badge}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="px-1">
-                        <h3 className="font-bold text-deep-forest text-base mb-1">{product.title}</h3>
-                        <p className="text-on-surface-variant text-xs mb-1">{product.finish}</p>
-                        <p className="text-on-surface-variant text-sm leading-relaxed line-clamp-2">{product.desc}</p>
-                      </div>
-                    </Link>
-                  </motion.div>
-                </ScrollReveal>
-              ))}
-            </AnimatePresence>
-          </div>
-        </div>
-      </section>
 
       {/* Signature Palettes */}
       <ScrollReveal>
