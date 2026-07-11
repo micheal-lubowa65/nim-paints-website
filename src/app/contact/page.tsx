@@ -119,7 +119,7 @@ export default function Contact() {
           <div
             className="w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: "url('/properties/2S0B9481.JPG')",
+              backgroundImage: "url('/properties/2S0B9628.JPG')",
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>

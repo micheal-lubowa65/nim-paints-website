@@ -78,7 +78,7 @@ export default function Projects() {
             priority
             sizes="100vw"
             className="object-cover"
-            src="/properties/2S0B9194.JPG"
+            src="/properties/2S0B9628.JPG"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
         </div>

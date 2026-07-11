@@ -17,7 +17,7 @@ export default function About() {
             priority
             sizes="100vw"
             className="object-cover"
-            src="/properties/2S0B9118.JPG"
+            src="/properties/2S0B9628.JPG"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
         </div>
@@ -39,7 +39,7 @@ export default function About() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="font-display-lg text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white leading-[0.85] tracking-tighter mb-6"
+            className="font-display-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.85] tracking-tighter mb-6"
           >
             Engineering Colors for the<br />
             <span className="text-flame-gold">Pearl of Africa</span>

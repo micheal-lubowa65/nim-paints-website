@@ -10,7 +10,7 @@ import CountUp from "@/components/CountUp";
 
 const heroSlides = [
   {
-    image: "/properties/2S0B9100.JPG",
+    image: "/properties/2S0B9628.JPG",
     headline: "NIM",
     headlineAccent: "PAINTS",
     accentColor: "text-flame-gold", // gold from logo
@@ -81,26 +81,18 @@ export default function Home() {
     <div className="-mt-20">
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden bg-deep-forest">
-        {/* Background images - crossfade with no gap */}
-        {heroSlides.map((s, i) => (
-          <motion.div
-            key={i}
-            animate={{ opacity: i === currentSlide ? 1 : 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0 z-0"
-            style={{ zIndex: i === currentSlide ? 1 : 0 }}
-          >
-            <Image
-              alt={`${s.headline} ${s.headlineAccent}`}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-              src={s.image}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
-          </motion.div>
-        ))}
+        {/* Single background image for all slides */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            alt="NIM Paints"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            src="/properties/2S0B9628.JPG"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
+        </div>
 
         {/* Slide indicators */}
         <div className="absolute top-1/2 right-6 md:right-10 z-20 -translate-y-1/2 flex flex-col gap-3">
@@ -126,7 +118,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="font-[var(--font-poppins)] text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] text-white leading-[0.8] tracking-tighter uppercase mb-6 font-black"
+              className="font-[var(--font-poppins)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white leading-[0.85] tracking-tighter uppercase mb-6 font-black"
             >
               {slide.headline} <span className={slide.accentColor}>{slide.headlineAccent}</span>
             </motion.h1>

@@ -76,7 +76,7 @@ export default function PaintCalculator() {
             priority
             sizes="100vw"
             className="object-cover"
-            src="/textures/CTM19446.jpg"
+            src="/properties/2S0B9628.JPG"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
         </div>
