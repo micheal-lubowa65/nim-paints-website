@@ -22,7 +22,7 @@ const projects = [
     title: "Textured Wall Application",
     location: "Mixed-Use Development",
     category: "Commercial",
-    img: "/properties/2S0B9187.JPG",
+    img: "/buildingimg.jpeg",
   },
   {
     title: "Premium Exterior Systems",
