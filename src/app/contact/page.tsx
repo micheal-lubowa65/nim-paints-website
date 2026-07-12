@@ -116,9 +116,9 @@ export default function Contact() {
       {/* Hero */}
       <section className="relative h-[60vh] w-full overflow-hidden bg-deep-forest">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-forest via-deep-forest to-leaf-green/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1A3D1F] via-deep-forest to-[#C8920A]/10"></div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 z-10 px-gutter pb-12 md:pb-16">
+        <div className="absolute inset-x-0 bottom-0 z-10 px-gutter pb-12 md:pb-20 lg:pb-24">
           <motion.span
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
