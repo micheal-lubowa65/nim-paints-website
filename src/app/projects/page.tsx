@@ -145,51 +145,39 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Carousel — 5 cards visible on desktop, 3 on mobile */}
-          <div className="relative h-[350px] md:h-[420px] mb-12">
-            {/* Far left (hidden on mobile) */}
-            <div
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-[18%] h-[60%] rounded-2xl overflow-hidden z-0 cursor-pointer hidden md:block"
-              onClick={prevSlide}
-            >
-              <img src={filteredProjects[getSlideIndex(-2)]?.img} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-white/50"></div>
-            </div>
-
+          {/* Carousel — full width landscape images */}
+          <div className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] mb-12">
             {/* Left adjacent */}
             <div
-              className="absolute left-0 md:left-[12%] top-1/2 -translate-y-1/2 w-[28%] md:w-[26%] h-[65%] md:h-[78%] rounded-2xl md:rounded-3xl overflow-hidden z-[2] cursor-pointer shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
               onClick={prevSlide}
             >
               <img src={filteredProjects[getSlideIndex(-1)]?.img} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-white/20"></div>
+              <div className="absolute inset-0 bg-white/30"></div>
             </div>
 
-            {/* Center card (active) */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[55%] md:w-[38%] h-full rounded-3xl overflow-hidden shadow-2xl z-10">
-              <img src={filteredProjects[currentIndex]?.img} alt={filteredProjects[currentIndex]?.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:p-6">
-                <h3 className="text-white font-bold text-sm md:text-lg mb-1">{filteredProjects[currentIndex]?.title}</h3>
+            {/* Center card (active) — full width on mobile, 60% on desktop */}
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-full md:w-[60%] h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl z-10"
+            >
+              <img src={filteredProjects[currentIndex]?.img} alt={filteredProjects[currentIndex]?.title} className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 md:p-8">
+                <h3 className="text-white font-bold text-base md:text-xl mb-1">{filteredProjects[currentIndex]?.title}</h3>
                 <p className="text-white/60 text-xs md:text-sm">{filteredProjects[currentIndex]?.location}</p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right adjacent */}
             <div
-              className="absolute right-0 md:right-[12%] top-1/2 -translate-y-1/2 w-[28%] md:w-[26%] h-[65%] md:h-[78%] rounded-2xl md:rounded-3xl overflow-hidden z-[2] cursor-pointer shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
               onClick={nextSlide}
             >
               <img src={filteredProjects[getSlideIndex(1)]?.img} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-white/20"></div>
-            </div>
-
-            {/* Far right (hidden on mobile) */}
-            <div
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-[18%] h-[60%] rounded-2xl overflow-hidden z-0 cursor-pointer hidden md:block"
-              onClick={nextSlide}
-            >
-              <img src={filteredProjects[getSlideIndex(2)]?.img} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-white/50"></div>
+              <div className="absolute inset-0 bg-white/30"></div>
             </div>
           </div>
 
