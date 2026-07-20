@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
-import FaqItem from "@/components/FaqItem";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
 
@@ -218,7 +217,7 @@ export default function Home() {
             <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-deep-forest mb-6 md:mb-10 tracking-tight leading-none">The Master Palette.</h2>
             <p className="font-body-lg text-lg md:text-xl text-on-surface-variant mb-8 md:mb-12 leading-relaxed">Explore our curated range of interior luxury and high-performance exterior systems engineered for tropical longevity.</p>
             <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-surface-container -mx-8 md:-mx-16 mb-8 md:mb-12">
-              <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" src="/upscaled%20product%20section.png" />
+              <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/upscaled%20product%20section.png" />
             </div>
             <div>
               <button className="group flex items-center gap-6 text-deep-forest font-bold uppercase tracking-[0.2em] text-sm hover:text-leaf-green transition-all cursor-pointer">
@@ -227,7 +226,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative h-[400px] md:h-[600px] lg:h-auto group overflow-hidden bg-surface-container hidden lg:block lg:order-2">
-            <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-[center_60%] transition-transform duration-1000 group-hover:scale-105" src="/upscaled%20product%20section.png" />
+            <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-105" src="/upscaled%20product%20section.png" />
           </div>
         </div>
       </section>
@@ -238,14 +237,14 @@ export default function Home() {
       <section className="bg-deep-forest overflow-hidden">
         <div className="grid lg:grid-cols-2">
           <div className="relative h-[400px] md:h-[600px] lg:h-auto group overflow-hidden hidden lg:block lg:order-1 bg-deep-forest">
-            <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
+            <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
           </div>
           <div className="p-8 md:p-16 lg:p-32 flex flex-col justify-center lg:order-2">
             <span className="font-label-lg text-xs uppercase tracking-[0.4em] text-flame-gold mb-6 md:mb-8 block">Gallery</span>
             <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 md:mb-10 tracking-tight leading-none">Iconic Ugandan Projects.</h2>
             <p className="font-body-lg text-lg md:text-xl text-white/60 mb-8 md:mb-12 leading-relaxed">See how NIM Paints transforms the Ugandan skyline, from landmark commercial infrastructure to bespoke residential estates.</p>
             <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-deep-forest -mx-8 md:-mx-16 mb-8 md:mb-12">
-              <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
+              <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
             </div>
             <div>
               <button className="group flex items-center gap-6 text-white font-bold uppercase tracking-[0.2em] text-sm hover:text-primary-fixed transition-all cursor-pointer">
@@ -258,65 +257,150 @@ export default function Home() {
       </ScrollReveal>
 
       {/* Process Section */}
-      <section className="py-section-padding bg-white overflow-hidden">
-        <div className="max-w-container-max mx-auto px-gutter">
+      <section className="relative py-section-padding overflow-hidden bg-gradient-to-br from-slate-900 via-deep-forest to-slate-800">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-leaf-green/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-flame-gold/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
+        
+        <div className="max-w-container-max mx-auto px-gutter relative z-10">
           <ScrollReveal>
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6 mb-20 md:mb-28">
-            <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-deep-forest tracking-tight leading-tight">
-              Our Process<br />and Timeline
-            </h2>
-            <p className="text-on-surface-variant text-base md:text-lg max-w-md leading-relaxed lg:pt-4">
+            <div>
+              <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
+                Our Process<br />and Timeline
+              </h2>
+            </div>
+            <p className="text-white/70 text-base md:text-lg max-w-md leading-relaxed lg:pt-4">
               From inquiry to handover, each step is focused on delivering premium results with transparency and precision at every stage.
             </p>
           </div>
           </ScrollReveal>
 
-          {/* Staircase cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-            {processSteps.map((step, i) => (
-              <ScrollReveal key={step.title} delay={i * 100}>
-                <div className="bg-surface-container-lowest border border-outline/10 rounded-2xl p-6 h-full">
-                  {/* Time badge */}
-                  <div className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-leaf-green/15 text-leaf-green text-xs font-bold mb-4">
-                    {i + 1}
+          {/* Process Timeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
+            {processSteps.map((step, i) => {
+              const colors = [
+                { bg: "from-blue-500 to-cyan-500", light: "from-blue-400/20 to-cyan-400/20", text: "text-blue-100", accent: "bg-blue-500" },
+                { bg: "from-emerald-500 to-green-500", light: "from-emerald-400/20 to-green-400/20", text: "text-emerald-100", accent: "bg-emerald-500" },
+                { bg: "from-orange-500 to-red-500", light: "from-orange-400/20 to-red-400/20", text: "text-orange-100", accent: "bg-orange-500" },
+                { bg: "from-purple-500 to-pink-500", light: "from-purple-400/20 to-pink-400/20", text: "text-purple-100", accent: "bg-purple-500" },
+                { bg: "from-amber-500 to-orange-500", light: "from-amber-400/20 to-orange-400/20", text: "text-amber-100", accent: "bg-amber-500" },
+                { bg: "from-rose-500 to-red-600", light: "from-rose-400/20 to-red-400/20", text: "text-rose-100", accent: "bg-rose-500" },
+              ];
+              const color = colors[i];
+
+              return (
+                <ScrollReveal key={step.title} delay={i * 100}>
+                  <div className={`group relative h-full overflow-hidden rounded-2xl bg-gradient-to-br ${color.bg} p-0.5 transition-all duration-500 hover:shadow-2xl hover:shadow-white/10`}>
+                    {/* Animated border */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div className={`relative h-full rounded-[15px] bg-gradient-to-br ${color.light} backdrop-blur-xl border border-white/10 p-6 md:p-8 flex flex-col`}>
+                      {/* Animated number badge */}
+                      <div className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full ${color.accent} text-white text-lg md:text-xl font-bold mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        {i + 1}
+                      </div>
+
+                      {/* Title */}
+                      <h4 className={`font-display-lg text-xl md:text-2xl ${color.text} mb-3 md:mb-4 font-bold tracking-tight`}>{step.title}</h4>
+
+                      {/* Description */}
+                      <p className={`text-white/70 text-sm md:text-base leading-relaxed flex-grow`}>{step.desc}</p>
+
+                      {/* Decorative corner accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
                   </div>
-
-                  {/* Title */}
-                  <h4 className="font-display-lg text-xl md:text-2xl text-deep-forest mb-4">{step.title}</h4>
-
-                  {/* Description as short text */}
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Legacy Section */}
       <ScrollReveal>
-      <section className="py-section-padding bg-surface-container">
-        <div className="max-w-container-max mx-auto px-gutter grid lg:grid-cols-2 gap-12 lg:gap-32 items-center">
-          <div>
-            <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-deep-forest mb-8 md:mb-12 tracking-tight italic" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)", color: "transparent" }}>The Legacy</h2>
-            <div className="space-y-6 md:space-y-8">
-              <p className="font-body-lg text-deep-forest text-xl md:text-2xl font-bold leading-tight">Made in Uganda, formulated for East Africa.</p>
-              <p className="text-on-surface-variant leading-relaxed">Since 2016, NIM Paints has been at the forefront of the coatings industry in East Africa. We don't just import products; we engineer solutions at our state-of-the-art facility in Kampala, specifically for the high humidity and intense UV exposure of our region.</p>
-              <div className="grid grid-cols-2 gap-6 md:gap-8 pt-6 md:pt-8">
-                <div>
-                  <div className="text-primary font-display-lg text-3xl md:text-4xl mb-2"><CountUp target={10} suffix="+" /></div>
-                  <div className="text-deep-forest font-bold text-xs uppercase tracking-widest">Years Innovation</div>
+      <section className="relative py-section-padding overflow-hidden bg-white">
+        {/* Decorative paint splash elements */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-leaf-green/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-20 w-96 h-96 bg-flame-gold/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-container-max mx-auto px-gutter relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+            {/* Left Content */}
+            <div>
+              {/* Vibrant tag */}
+              <div className="inline-flex items-center gap-2 mb-6 md:mb-8">
+                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-leaf-green to-emerald-400 animate-pulse"></div>
+                <span className="text-leaf-green font-bold text-sm uppercase tracking-[0.15em]">Est. 2016 • Uganda</span>
+              </div>
+
+              {/* Main Title with gradient */}
+              <h2 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-black mb-8 md:mb-12 tracking-tight leading-[1.1]">
+                <span className="bg-gradient-to-r from-deep-forest via-emerald-700 to-leaf-green bg-clip-text text-transparent">The Legacy</span>
+              </h2>
+
+              {/* Tagline */}
+              <p className="font-body-lg text-deep-forest text-xl md:text-2xl font-bold leading-tight mb-6">Made in Uganda, formulated for East Africa.</p>
+
+              {/* Description with better styling */}
+              <p className="text-on-surface-variant text-base md:text-lg leading-relaxed mb-10 max-w-lg">Since 2016, NIM Paints has been at the forefront of the coatings industry in East Africa. We don't just import products; we engineer solutions at our state-of-the-art facility in Kampala, specifically for the high humidity and intense UV exposure of our region.</p>
+
+              {/* Stats with vibrant colors */}
+              <div className="grid grid-cols-2 gap-6 md:gap-8">
+                {/* Stat 1 */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-leaf-green to-emerald-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-leaf-green/30 shadow-lg">
+                    <div className="text-leaf-green font-display-lg text-4xl md:text-5xl font-black mb-2"><CountUp target={10} suffix="+" /></div>
+                    <div className="text-deep-forest font-bold text-xs uppercase tracking-wider">Years of<br />Innovation</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-primary font-display-lg text-3xl md:text-4xl mb-2"><CountUp target={100} suffix="%" /></div>
-                  <div className="text-deep-forest font-bold text-xs uppercase tracking-widest">Ugandan Owned</div>
+
+                {/* Stat 2 */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-flame-gold via-orange-500 to-red-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-flame-gold/30 shadow-lg">
+                    <div className="bg-gradient-to-r from-flame-gold to-orange-400 bg-clip-text text-transparent font-display-lg text-4xl md:text-5xl font-black mb-2"><CountUp target={100} suffix="%" /></div>
+                    <div className="text-deep-forest font-bold text-xs uppercase tracking-wider">Ugandan<br />Owned</div>
+                  </div>
                 </div>
               </div>
+
+              {/* Divider line */}
+              <div className="mt-10 md:mt-14 h-1 w-20 bg-gradient-to-r from-leaf-green to-flame-gold rounded-full"></div>
             </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-2xl bg-surface-container ring-2 ring-deep-forest/10">
-              <img alt="NIM Paints Premium Paint Tin" className="w-full h-full object-cover" src="/paint%20bukcets.png" />
+
+            {/* Right - Product Image with enhanced styling */}
+            <div className="relative lg:ml-8">
+              {/* Decorative frame */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-leaf-green/40 via-flame-gold/20 to-orange-500/30 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative group">
+                {/* Gradient border frame */}
+                <div className="absolute inset-0 bg-gradient-to-br from-leaf-green via-emerald-400 to-flame-gold rounded-3xl p-1 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-deep-forest to-slate-900 shadow-2xl border-2 border-white/10">
+                  {/* Image container with overlay */}
+                  <img 
+                    alt="NIM Paints Premium Paint Tin" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    src="/paint%20bukcets.png" 
+                  />
+                  
+                  {/* Gradient overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-forest/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+
+                {/* Floating badge */}
+                <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-leaf-green to-emerald-400 rounded-full p-6 md:p-8 shadow-2xl transform group-hover:scale-110 transition-transform duration-500 border-4 border-deep-forest">
+                  <div className="text-center">
+                    <div className="text-deep-forest font-black text-lg md:text-2xl">Made in</div>
+                    <div className="text-deep-forest font-black text-xl md:text-3xl">Uganda</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -434,19 +518,27 @@ export default function Home() {
       </ScrollReveal>
 
       {/* FAQ Section */}
-      <section className="py-section-padding bg-surface">
-        <div className="max-w-3xl mx-auto px-gutter">
+      <section className="py-section-padding bg-white">
+        <div className="max-w-container-max mx-auto px-gutter">
           <ScrollReveal>
-          <div className="text-center mb-16 md:mb-24">
-            <span className="font-label-lg text-xs uppercase tracking-[0.4em] text-primary mb-4 md:mb-6 block">Support</span>
+          <div className="text-center mb-16 md:mb-20">
+            <span className="font-label-lg text-xs uppercase tracking-[0.4em] text-leaf-green mb-4 md:mb-6 block">Support</span>
             <h2 className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-6 md:mb-8 tracking-tight">Technical Inquiries</h2>
             <p className="font-body-lg text-on-surface-variant text-lg">Essential information regarding product lifecycle and application.</p>
           </div>
           </ScrollReveal>
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {faqs.map((faq, i) => (
               <ScrollReveal key={faq.q} delay={i * 100}>
-              <FaqItem question={faq.q} answer={faq.a} />
+              <div className="bg-surface-container-lowest rounded-2xl p-8 md:p-10 border border-outline/10 hover:border-leaf-green/30 hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <div className="w-12 h-12 rounded-xl bg-leaf-green/10 flex items-center justify-center mb-6">
+                  <span className="material-symbols-outlined text-2xl text-leaf-green">
+                    {i === 0 ? "shield" : i === 1 ? "eco" : "palette"}
+                  </span>
+                </div>
+                <h3 className="font-title-lg text-deep-forest mb-4 text-lg">{faq.q}</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">{faq.a}</p>
+              </div>
               </ScrollReveal>
             ))}
           </div>
