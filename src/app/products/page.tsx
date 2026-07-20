@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { products } from "@/data/products";
-import { palettes } from "@/data/colors";
+import { palettes, textures } from "@/data/colors";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const categories = ["All Products", "Interior", "Exterior", "Textured"];
@@ -25,7 +25,7 @@ export default function Products() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#4A1A8A] via-[#6820B8] to-[#3D0E70]"></div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-10 px-gutter pb-12 md:pb-20 lg:pb-24">
+        <div className="hero-content px-gutter">
           <motion.span
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,7 +112,7 @@ export default function Products() {
                         <img
                           src={product.img}
                           alt={product.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                         />
                         <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-3 py-1 rounded-full">
                           {product.badge}
@@ -135,27 +135,29 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Signature Palettes */}
+      {/* Signature Textures */}
       <ScrollReveal>
-        <section className="py-section-padding bg-[#f8f8f6]">
+        <section id="signature-textures" className="py-section-padding bg-[#f8f8f6]">
           <div className="max-w-container-max mx-auto px-gutter">
-            <div className="flex flex-col md:flex-row items-baseline justify-between gap-4 mb-12">
-              <div>
-                <h2 className="font-display-lg text-3xl md:text-4xl text-deep-forest mb-2 tracking-tight">Signature Palettes</h2>
-                <p className="text-on-surface-variant">Selected by architectural experts for contemporary East African landscapes.</p>
-              </div>
-              <Link href="/color-visualizer" className="text-sm text-leaf-green font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                Full Visualizer <span className="material-symbols-outlined text-base">arrow_right_alt</span>
-              </Link>
+            <div className="mb-12">
+              <h2 className="font-display-lg text-3xl md:text-4xl text-deep-forest mb-2 tracking-tight">Signature Textures</h2>
+              <p className="text-on-surface-variant">Premium finish options for every interior and exterior application.</p>
             </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-              {palettes.map((p) => (
-                <div key={p.name} className="group cursor-pointer">
-                  <div className={`aspect-square ${p.color} rounded-2xl mb-3 relative overflow-hidden shadow-sm`}>
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6">
+              {textures.map((t) => (
+                <div key={t.name} className="group cursor-pointer">
+                  <div className="aspect-square rounded-2xl mb-3 relative overflow-hidden shadow-sm bg-gray-200 border border-gray-300">
+                    <Image
+                      src={t.image}
+                      alt={t.name}
+                      fill
+                      sizes="(max-width: 768px) 33vw, 16vw"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
                   </div>
-                  <p className="font-bold text-xs text-deep-forest">{p.name}</p>
-                  <p className="text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">{p.finish}</p>
+                  <p className="font-bold text-xs text-deep-forest">{t.name}</p>
+                  <p className="text-[10px] text-on-surface-variant uppercase tracking-wider opacity-60">{t.type}</p>
                 </div>
               ))}
             </div>

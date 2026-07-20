@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
+import { textures } from "@/data/colors";
 
 const heroSlides = [
   {
@@ -108,7 +109,7 @@ export default function Home() {
         </div>
 
         {/* Bottom content overlay */}
-        <div className="absolute inset-x-0 bottom-0 z-10 px-gutter pb-12 md:pb-16 lg:pb-20">
+        <div className="hero-content px-gutter">
           {/* Large headline */}
           <AnimatePresence mode="wait">
             <motion.h1
@@ -182,6 +183,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Textures Marquee */}
+      <ScrollReveal>
+      <section className="py-8 bg-white">
+        <div className="max-w-container-max mx-auto px-gutter">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="font-display-lg text-2xl text-deep-forest">Signature Textures</h3>
+              <p className="text-on-surface-variant">Premium finish options for every interior and exterior application.</p>
+            </div>
+            <Link href="/products#signature-textures" className="ml-6 bg-deep-forest text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-deep-forest/90 transition">
+              Explore more textures
+            </Link>
+          </div>
+
+          <div className="w-full overflow-hidden">
+            <div className="flex gap-4 items-center marquee-track" style={{willChange: 'transform'}}>
+              {textures.concat(textures).map((t, i) => (
+                <div key={i} className="w-48 h-48 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm bg-gray-100 border border-gray-200">
+                  <Image src={t.image} alt={t.name} width={192} height={192} className="w-full h-full object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          .marquee-track {
+            animation: marquee 28s linear infinite;
+          }
+
+          @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+        `}</style>
+      </section>
+      </ScrollReveal>
+
       {/* Stats Bar */}
       <ScrollReveal>
       <section className="py-12 bg-surface-container border-y border-outline/5">
@@ -216,8 +255,8 @@ export default function Home() {
             <span className="font-label-lg text-xs uppercase tracking-[0.4em] text-primary mb-6 md:mb-8 block">Collections</span>
             <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-deep-forest mb-6 md:mb-10 tracking-tight leading-none">The Master Palette.</h2>
             <p className="font-body-lg text-lg md:text-xl text-on-surface-variant mb-8 md:mb-12 leading-relaxed">Explore our curated range of interior luxury and high-performance exterior systems engineered for tropical longevity.</p>
-            <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-surface-container -mx-8 md:-mx-16 mb-8 md:mb-12">
-              <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/upscaled%20product%20section.png" />
+            <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-surface-container mb-8 md:mb-12">
+              <Image alt="NIM Paints Range" width={1200} height={800} sizes="(max-width: 1024px) 100vw, 50vw" className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110" src="/upscaled%20product%20section.png" />
             </div>
             <div>
               <button className="group flex items-center gap-6 text-deep-forest font-bold uppercase tracking-[0.2em] text-sm hover:text-leaf-green transition-all cursor-pointer">
@@ -225,8 +264,8 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="relative h-[400px] md:h-[600px] lg:h-auto group overflow-hidden bg-surface-container hidden lg:block lg:order-2">
-            <Image alt="NIM Paints Range" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-105" src="/upscaled%20product%20section.png" />
+          <div className="relative h-[400px] md:h-[600px] lg:h-[600px] group overflow-hidden bg-surface-container hidden lg:block lg:order-2">
+            <Image alt="NIM Paints Range" width={1200} height={800} sizes="(max-width: 1024px) 100vw, 50vw" className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-105" src="/upscaled%20product%20section.png" />
           </div>
         </div>
       </section>
@@ -236,15 +275,15 @@ export default function Home() {
       <ScrollReveal direction="right">
       <section className="bg-deep-forest overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="relative h-[400px] md:h-[600px] lg:h-auto group overflow-hidden hidden lg:block lg:order-1 bg-deep-forest">
-            <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
+          <div className="relative h-[400px] md:h-[600px] lg:h-[600px] group overflow-hidden hidden lg:block lg:order-1 bg-deep-forest">
+            <Image alt="NIM Paints Projects" width={1200} height={800} sizes="(max-width: 1024px) 100vw, 50vw" className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
           </div>
           <div className="p-8 md:p-16 lg:p-32 flex flex-col justify-center lg:order-2">
             <span className="font-label-lg text-xs uppercase tracking-[0.4em] text-flame-gold mb-6 md:mb-8 block">Gallery</span>
             <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 md:mb-10 tracking-tight leading-none">Iconic Ugandan Projects.</h2>
             <p className="font-body-lg text-lg md:text-xl text-white/60 mb-8 md:mb-12 leading-relaxed">See how NIM Paints transforms the Ugandan skyline, from landmark commercial infrastructure to bespoke residential estates.</p>
-            <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-deep-forest -mx-8 md:-mx-16 mb-8 md:mb-12">
-              <Image alt="NIM Paints Projects" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
+            <div className="relative h-[400px] md:h-[600px] lg:hidden group overflow-hidden bg-deep-forest mb-8 md:mb-12">
+              <Image alt="NIM Paints Projects" width={1200} height={800} sizes="(max-width: 1024px) 100vw, 50vw" className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110" src="/final%20project%20image.png" />
             </div>
             <div>
               <button className="group flex items-center gap-6 text-white font-bold uppercase tracking-[0.2em] text-sm hover:text-primary-fixed transition-all cursor-pointer">
@@ -257,24 +296,24 @@ export default function Home() {
       </ScrollReveal>
 
       {/* Process Section */}
-      <section className="relative py-section-padding overflow-hidden bg-gradient-to-br from-slate-900 via-deep-forest to-slate-800">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-leaf-green/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-flame-gold/10 rounded-full blur-3xl -ml-48 -mb-48"></div>
+      <section className="relative py-section-padding overflow-hidden bg-gradient-to-br from-slate-800/40 via-deep-forest/12 to-slate-700/20">
+        {/* Decorative elements (reduced intensity) */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-leaf-green/4 rounded-full blur-3xl -mr-48 -mt-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-flame-gold/4 rounded-full blur-3xl -ml-48 -mb-48"></div>
         
         <div className="max-w-container-max mx-auto px-gutter relative z-10">
-          <ScrollReveal>
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6 mb-20 md:mb-28">
-            <div>
-              <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-                Our Process<br />and Timeline
-              </h2>
+            <ScrollReveal>
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6 mb-20 md:mb-28">
+              <div>
+                <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
+                  Our Process<br />and Timeline
+                </h2>
+              </div>
+              <p className="text-white drop-shadow text-base md:text-lg max-w-md leading-relaxed lg:pt-4 font-medium">
+                From inquiry to handover, each step is focused on delivering premium results with transparency and precision at every stage.
+              </p>
             </div>
-            <p className="text-white/70 text-base md:text-lg max-w-md leading-relaxed lg:pt-4">
-              From inquiry to handover, each step is focused on delivering premium results with transparency and precision at every stage.
-            </p>
-          </div>
-          </ScrollReveal>
+            </ScrollReveal>
 
           {/* Process Timeline */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
@@ -385,7 +424,7 @@ export default function Home() {
                   {/* Image container with overlay */}
                   <img 
                     alt="NIM Paints Premium Paint Tin" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
                     src="/paint%20bukcets.png" 
                   />
                   
@@ -418,16 +457,42 @@ export default function Home() {
           </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: "flag", title: "100% Ugandan Owned", desc: "Manufactured locally in Kampala, supporting local industry and tailored specifically for our climate." },
-              { icon: "verified", title: "UNBS Certified", desc: "Internationally recognized quality management standard ensuring consistent product excellence." },
-              { icon: "palette", title: "8,000+ Colour Range", desc: "Latest spectrophotometer technology can match any architectural sample with precision." },
-              { icon: "support_agent", title: "Free Technical Support", desc: "Site inspections and on-site training provided to ensure perfect application every time." },
+              {
+                icon: "flag",
+                title: "100% Ugandan Owned",
+                desc: "Manufactured locally in Kampala, supporting local industry and tailored specifically for our climate.",
+                cardClass: "bg-leaf-green/10 border-leaf-green/20",
+                iconClass: "text-leaf-green",
+              },
+              {
+                icon: "verified",
+                title: "UNBS Certified",
+                desc: "Internationally recognized quality management standard ensuring consistent product excellence.",
+                cardClass: "bg-emerald-100 border-emerald-200",
+                iconClass: "text-emerald-800",
+              },
+              {
+                icon: "palette",
+                title: "8,000+ Colour Range",
+                desc: "Latest spectrophotometer technology can match any architectural sample with precision.",
+                cardClass: "bg-blue-100 border-blue-200",
+                iconClass: "text-blue-800",
+              },
+              {
+                icon: "support_agent",
+                title: "Free Technical Support",
+                desc: "Site inspections and on-site training provided to ensure perfect application every time.",
+                cardClass: "bg-flame-gold/10 border-flame-gold/20",
+                iconClass: "text-[#b15a0d]",
+              },
             ].map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 100}>
-              <div className="bg-surface-container-lowest p-8 rounded-2xl text-center hover:shadow-md transition-shadow border border-outline/10 hover:border-leaf-green/40 transition-colors">
-                <span className="material-symbols-outlined text-4xl text-leaf-green mb-4 block">{item.icon}</span>
-                <h3 className="font-title-lg text-deep-forest mb-3">{item.title}</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
+              <div className={`min-h-[290px] flex flex-col justify-between p-8 rounded-2xl text-center shadow-sm border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${item.cardClass}`}>
+                <div>
+                  <span className={`material-symbols-outlined text-4xl mb-4 block ${item.iconClass}`}>{item.icon}</span>
+                  <h3 className="font-title-lg text-deep-forest mb-3">{item.title}</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-on-surface-variant">{item.desc}</p>
               </div>
               </ScrollReveal>
             ))}
@@ -496,7 +561,7 @@ export default function Home() {
           {[...testimonials, ...testimonials].map((t, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-[380px] bg-white rounded-2xl p-8 shadow-lg border border-outline/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="flex-shrink-0 w-[90vw] sm:w-[380px] bg-white rounded-2xl p-8 shadow-lg border border-outline/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
 
               <div className="flex items-center gap-4 mb-6">

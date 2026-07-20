@@ -54,7 +54,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl bg-white/5">
+              <div className="w-[80vw] sm:w-[280px] h-[80vw] sm:h-[280px] md:w-[320px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl bg-white/5">
                 <img src={product.img} alt={product.title} className="w-full h-full object-contain" />
               </div>
             </div>
@@ -126,7 +126,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {relatedProducts.map((rp) => (
                 <Link key={rp.slug} href={`/products/${rp.slug}`} className="group flex items-center gap-8 p-8 bg-surface-container-lowest rounded-2xl hover:shadow-lg transition-all">
                   <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0">
-                    <img src={rp.img} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                    <img src={rp.img} alt={rp.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
                   </div>
                   <div className="flex-1">
                     <span className={`text-xs font-bold uppercase tracking-widest ${rp.badgeColor}`}>{rp.badge}</span>

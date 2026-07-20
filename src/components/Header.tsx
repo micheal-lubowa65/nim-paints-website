@@ -44,11 +44,11 @@ export default function Header() {
     <nav
       className={`w-full fixed top-0 z-50 transition-all duration-500 ${
         isTransparent
-          ? "bg-transparent border-b border-white/10"
+          ? "bg-transparent backdrop-blur-sm border-b border-white/10"
           : "bg-white border-b border-gray-200 shadow-sm"
       }`}
     >
-      <div className={`w-full mx-auto flex justify-between items-center px-4 md:px-gutter ${isTransparent ? "h-20" : "h-16"}`}>
+      <div className={`w-full mx-auto flex justify-between items-center px-4 md:px-gutter h-16 md:h-20`}>
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src="/nim-logo-site-600x135.png"
@@ -61,7 +61,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -95,7 +95,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-3 cursor-pointer shrink-0"
+          className="lg:hidden flex flex-col gap-1.5 p-3 cursor-pointer shrink-0"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -106,7 +106,7 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-[80vh] border-t border-gray-200" : "max-h-0"}`}>
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-[80vh] border-t border-gray-200" : "max-h-0"}`}>
         <div className="px-gutter py-6 flex flex-col gap-4 bg-white">
           {navLinks.map((link) => (
             <Link

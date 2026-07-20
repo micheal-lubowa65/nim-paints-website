@@ -15,7 +15,7 @@ export default function About() {
         </div>
 
         {/* Bottom content overlay */}
-        <div className="absolute inset-x-0 bottom-0 z-10 px-gutter pb-12 md:pb-20 lg:pb-24">
+        <div className="hero-content px-gutter">
           {/* Label */}
           <motion.span
             initial={{ opacity: 0, y: 30 }}
@@ -144,36 +144,62 @@ export default function About() {
           {/* Stats row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             <ScrollReveal delay={100}>
-            <div className="bg-[#f0f7f1] rounded-3xl p-6 text-center">
-              <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">10+</div>
-              <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Years Experience</div>
-              <p className="text-on-surface-variant/70 text-xs leading-relaxed">Pioneering tropical coating solutions since 2016.</p>
+            <div className="min-h-[220px] rounded-3xl p-6 text-center bg-[#f0f7f1] shadow-sm border border-leaf-green/15 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center justify-center rounded-full bg-leaf-green/10 text-leaf-green px-3 py-1 text-[11px] uppercase tracking-[0.25em] mb-4">
+                  Proven Durability
+                </div>
+                <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">10+</div>
+                <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Years Experience</div>
+              </div>
+              <p className="text-on-surface-variant/70 text-xs leading-relaxed">
+                Pioneering tropical coating solutions since 2016.
+              </p>
             </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-            <div className="bg-[#f0f7f1] rounded-3xl p-6 text-center">
-              <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">8,000+</div>
-              <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Colour Range</div>
-              <p className="text-on-surface-variant/70 text-xs leading-relaxed">Spectrophotometer precision matching.</p>
+            <div className="min-h-[220px] rounded-3xl p-6 text-center bg-white shadow-sm border border-blue-100 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center justify-center rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-[11px] uppercase tracking-[0.25em] mb-4">
+                  Colour Authority
+                </div>
+                <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">8,000+</div>
+                <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Colour Range</div>
+              </div>
+              <p className="text-on-surface-variant/70 text-xs leading-relaxed">
+                Spectrophotometer precision matching across our entire palette.
+              </p>
             </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-            <div className="bg-[#f0f7f1] rounded-3xl p-6 text-center">
-              <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">300+</div>
-              <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Stockists</div>
-              <p className="text-on-surface-variant/70 text-xs leading-relaxed">Distribution network across Uganda.</p>
+            <div className="min-h-[220px] rounded-3xl p-6 text-center bg-[#fff7e6] shadow-sm border border-orange-100 flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center justify-center rounded-full bg-orange-100 text-orange-700 px-3 py-1 text-[11px] uppercase tracking-[0.25em] mb-4">
+                  Local Reach
+                </div>
+                <div className="font-display-lg text-4xl md:text-5xl text-deep-forest mb-2">300+</div>
+                <div className="text-on-surface-variant text-xs uppercase tracking-wider mb-3">Stockists</div>
+              </div>
+              <p className="text-on-surface-variant/70 text-xs leading-relaxed">
+                Distribution network across Uganda and East Africa.
+              </p>
             </div>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-            <div className="bg-gradient-to-br from-leaf-green to-primary rounded-3xl p-6 text-center text-white">
-              <div className="font-display-lg text-2xl md:text-3xl mb-2">Get Started</div>
-              <p className="text-white/80 text-xs leading-relaxed mb-4">Connect with our team today.</p>
-              <a href="/contact" className="inline-flex items-center gap-1 text-white text-xs font-bold underline underline-offset-2">
-                Contact Us <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </a>
+            <div className="min-h-[220px] rounded-3xl p-6 text-center bg-gradient-to-br from-leaf-green via-[#4dc57d] to-[#82d694] text-white shadow-lg flex flex-col justify-between">
+              <div>
+                <div className="inline-flex items-center justify-center rounded-full bg-white/15 text-white px-3 py-1 text-[11px] uppercase tracking-[0.25em] mb-4">
+                  Trusted Warranty
+                </div>
+                <div className="font-display-lg text-4xl md:text-5xl mb-2">15</div>
+                <div className="uppercase tracking-wider text-[10px] opacity-90 mb-3">Year Warranty</div>
+              </div>
+              <p className="text-white/85 text-xs leading-relaxed">
+                Certified protection with long-term performance for your project.
+              </p>
             </div>
             </ScrollReveal>
           </div>
