@@ -42,6 +42,48 @@ const projects = [
     category: "Residential",
     img: "/properties/2S0B9628.JPG",
   },
+  {
+    title: "Commercial Project",
+    location: "Commercial Complex, Kampala",
+    category: "Commercial",
+    img: "/properties/Commercial-2.JPG",
+  },
+  {
+    title: "Commercial Development",
+    location: "Business Park, Kampala",
+    category: "Commercial",
+    img: "/properties/Commercial-3.JPG",
+  },
+  {
+    title: "Institutional Facility",
+    location: "Institutional Building, Uganda",
+    category: "Institutional",
+    img: "/properties/institution-image.JPG",
+  },
+  {
+    title: "Institutional Project",
+    location: "Public Institution, Uganda",
+    category: "Institutional",
+    img: "/properties/institution-image-2.JPG",
+  },
+  {
+    title: "Institutional Development",
+    location: "Educational Complex, Uganda",
+    category: "Institutional",
+    img: "/properties/institution-image-3.JPG",
+  },
+  {
+    title: "Institutional Construction",
+    location: "Health Facility, Uganda",
+    category: "Institutional",
+    img: "/properties/institution-image-4.JPG",
+  },
+  {
+    title: "Residential Development",
+    location: "Residential Estate, Uganda",
+    category: "Residential",
+    img: "/properties/residential.jpeg",
+  },
 ];
 
 const categories = ["All Projects", "Commercial", "Institutional", "Residential"];
@@ -152,7 +194,7 @@ export default function Projects() {
               className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
               onClick={prevSlide}
             >
-              <img src={filteredProjects[getSlideIndex(-1)]?.img} alt="" className="w-full h-full object-cover" />
+              <img src={filteredProjects[getSlideIndex(-1)]?.img} alt="" className="w-full h-full object-contain bg-neutral-900" />
               <div className="absolute inset-0 bg-white/30"></div>
             </div>
 
@@ -164,7 +206,7 @@ export default function Projects() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-full md:w-[60%] h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl z-10"
             >
-              <img src={filteredProjects[currentIndex]?.img} alt={filteredProjects[currentIndex]?.title} className="w-full h-full object-cover object-center" />
+              <img src={filteredProjects[currentIndex]?.img} alt={filteredProjects[currentIndex]?.title} className="w-full h-full object-contain object-center bg-neutral-900" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 md:p-8">
                 <h3 className="text-white font-bold text-base md:text-xl mb-1">{filteredProjects[currentIndex]?.title}</h3>
                 <p className="text-white/60 text-xs md:text-sm">{filteredProjects[currentIndex]?.location}</p>
@@ -176,7 +218,7 @@ export default function Projects() {
               className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
               onClick={nextSlide}
             >
-              <img src={filteredProjects[getSlideIndex(1)]?.img} alt="" className="w-full h-full object-cover" />
+              <img src={filteredProjects[getSlideIndex(1)]?.img} alt="" className="w-full h-full object-contain bg-neutral-900" />
               <div className="absolute inset-0 bg-white/30"></div>
             </div>
           </div>
