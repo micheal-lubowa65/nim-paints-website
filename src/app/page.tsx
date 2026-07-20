@@ -13,7 +13,7 @@ const heroSlides = [
     image: "/properties/2S0B9628.JPG",
     headline: "NIM",
     headlineAccent: "PAINTS",
-    accentColor: "text-flame-gold", // gold from logo
+    accentColor: "text-leaf-green",
     description: "From modern homes to iconic commercial spaces, our advanced coating systems combine lasting protection with sophisticated finishes—bringing your vision to life with uncompromising quality.",
     cta: { label: "Explore Products", href: "/products" },
   },
