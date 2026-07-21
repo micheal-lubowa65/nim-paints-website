@@ -291,96 +291,141 @@ export default function Home() {
       {/* Process Section */}
       <ProcessTimeline />
 
-      {/* Legacy Section */}
-      <ScrollReveal>
-      <section className="relative py-section-padding overflow-hidden bg-white">
-        {/* Decorative paint splash elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-leaf-green/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-20 w-96 h-96 bg-flame-gold/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-orange-500/5 rounded-full blur-3xl"></div>
-        
-        <div className="max-w-container-max mx-auto px-gutter relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            {/* Left Content */}
-            <div>
-              {/* Vibrant tag */}
-              <div className="inline-flex items-center gap-2 mb-6 md:mb-8">
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-leaf-green to-emerald-400 animate-pulse"></div>
-                <span className="text-leaf-green font-bold text-sm uppercase tracking-[0.15em]">Est. 2016 • Uganda</span>
-              </div>
-
-              {/* Main Title with gradient */}
-              <h2 className="font-display-lg text-5xl md:text-6xl lg:text-7xl font-black mb-8 md:mb-12 tracking-tight leading-[1.1]">
-                <span className="bg-gradient-to-r from-deep-forest via-emerald-700 to-leaf-green bg-clip-text text-transparent">The Legacy</span>
-              </h2>
-
-              {/* Tagline */}
-              <p className="font-body-lg text-deep-forest text-xl md:text-2xl font-bold leading-tight mb-6">Made in Uganda, formulated for East Africa.</p>
-
-              {/* Description with better styling */}
-              <p className="text-on-surface-variant text-base md:text-lg leading-relaxed mb-10 max-w-lg">Since 2016, NIM Paints has been at the forefront of the coatings industry in East Africa. We don't just import products; we engineer solutions at our state-of-the-art facility in Kampala, specifically for the high humidity and intense UV exposure of our region.</p>
-
-              {/* Stats with vibrant colors */}
-              <div className="grid grid-cols-2 gap-6 md:gap-8">
-                {/* Stat 1 */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-leaf-green to-emerald-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-leaf-green/30 shadow-lg">
-                    <div className="text-leaf-green font-display-lg text-4xl md:text-5xl font-black mb-2"><CountUp target={10} suffix="+" /></div>
-                    <div className="text-deep-forest font-bold text-xs uppercase tracking-wider">Years of<br />Innovation</div>
-                  </div>
+      {/* Legacy Section — Premium 2-column layout */}
+      <section className="legacy-section">
+        <div className="legacy-container">
+          <div className="legacy-grid">
+            {/* LEFT COLUMN */}
+            <div className="legacy-left">
+              <ScrollReveal direction="left" duration={800}>
+                {/* Badge */}
+                <div className="legacy-badge">
+                  <span className="legacy-badge-dot" />
+                  <span>EST. 2016</span>
+                  <span>•</span>
+                  <span>UGANDA</span>
                 </div>
 
-                {/* Stat 2 */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-flame-gold via-orange-500 to-red-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-flame-gold/30 shadow-lg">
-                    <div className="bg-gradient-to-r from-flame-gold to-orange-400 bg-clip-text text-transparent font-display-lg text-4xl md:text-5xl font-black mb-2"><CountUp target={100} suffix="%" /></div>
-                    <div className="text-deep-forest font-bold text-xs uppercase tracking-wider">Ugandan<br />Owned</div>
-                  </div>
-                </div>
+                {/* Heading */}
+                <h2 className="legacy-heading">
+                  The <span>Legacy</span>
+                </h2>
+
+                {/* Subtitle */}
+                <p className="legacy-subtitle">
+                  Made in Uganda, formulated for East Africa.
+                </p>
+
+                {/* Gold Divider */}
+                <div className="legacy-gold-line" />
+
+                {/* Description */}
+                <p className="legacy-description">
+                  Since 2016, NIM Paints has been at the forefront of the coatings
+                  industry in East Africa. We don't just import products; we
+                  engineer solutions at our state-of-the-art facility in Kampala,
+                  specifically for the high humidity and intense UV exposure of our
+                  region.
+                </p>
+              </ScrollReveal>
+
+              {/* Features Grid — 4 columns with vertical separators */}
+              <div className="legacy-features">
+                {[
+                  {
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                    ),
+                    title: "UNBS Certified",
+                    text: "Internationally recognized quality management standard ensuring consistent product excellence.",
+                  },
+                  {
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2" /><path d="M12 20v2" />
+                        <path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" />
+                        <path d="M2 12h2" /><path d="M20 12h2" />
+                        <path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
+                      </svg>
+                    ),
+                    title: "UV Protection",
+                    text: "Engineered to withstand intense tropical UV exposure without fading or degrading.",
+                  },
+                  {
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2" />
+                        <path d="M8.5 2h7" /><path d="M7 16.5h10" />
+                      </svg>
+                    ),
+                    title: "Advanced Formulation",
+                    text: "State-of-the-art pigment technology delivers superior coverage and colour retention.",
+                  },
+                  {
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-1 3.5-4.1 5.5-7 6.5" />
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                      </svg>
+                    ),
+                    title: "Eco-Friendly",
+                    text: "Low-VOC formulations prioritize superior air quality and minimal environmental impact.",
+                  },
+                ].map((feat, i) => (
+                  <ScrollReveal key={feat.title} delay={i * 120} direction="up">
+                    <div className="legacy-feature-item">
+                      <div className="legacy-feature-icon">{feat.icon}</div>
+                      <h4 className="legacy-feature-title">{feat.title}</h4>
+                      <p className="legacy-feature-text">{feat.text}</p>
+                    </div>
+                  </ScrollReveal>
+                ))}
               </div>
 
-              {/* Divider line */}
-              <div className="mt-10 md:mt-14 h-1 w-20 bg-gradient-to-r from-leaf-green to-flame-gold rounded-full"></div>
+              {/* Stat Cards */}
+              <div className="legacy-stats">
+                <ScrollReveal delay={100}>
+                  <div className="legacy-stat-card legacy-stat-card--green">
+                    <div className="legacy-stat-number legacy-stat-number--green">
+                      <CountUp target={10} suffix="+" />
+                    </div>
+                    <div className="legacy-stat-label">Years of<br />Innovation</div>
+                  </div>
+                </ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <div className="legacy-stat-card legacy-stat-card--gold">
+                    <div className="legacy-stat-number legacy-stat-number--gold">
+                      <CountUp target={100} suffix="%" />
+                    </div>
+                    <div className="legacy-stat-label">Ugandan<br />Owned</div>
+                  </div>
+                </ScrollReveal>
+              </div>
             </div>
 
-            {/* Right - Product Image with enhanced styling */}
-            <div className="relative lg:ml-8">
-              {/* Decorative frame */}
-              <div className="absolute -inset-8 bg-gradient-to-br from-leaf-green/40 via-flame-gold/20 to-orange-500/30 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative group">
-                {/* Gradient border frame */}
-                <div className="absolute inset-0 bg-gradient-to-br from-leaf-green via-emerald-400 to-flame-gold rounded-3xl p-1 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-deep-forest to-slate-900 shadow-2xl border-2 border-white/10">
-                  {/* Image container with overlay */}
+            {/* RIGHT COLUMN — Product Card */}
+            <ScrollReveal direction="right" duration={900}>
+              <div className="legacy-product-card">
+                {/* Paint Buckets */}
+                <div className="legacy-product-image-wrap">
                   <Image
-                    alt="NIM Paints Premium Paint Tin"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                    alt="NIM Paints Premium Paint Buckets"
+                    width={560}
+                    height={560}
+                    className="legacy-product-img"
                     src="/paint%20bukcets.png"
+                    priority
                   />
-                  
-                  {/* Gradient overlay for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-forest/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-
-                {/* Floating badge */}
-                <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-leaf-green to-emerald-400 rounded-full p-6 md:p-8 shadow-2xl transform group-hover:scale-110 transition-transform duration-500 border-4 border-deep-forest">
-                  <div className="text-center">
-                    <div className="text-deep-forest font-black text-lg md:text-2xl">Made in</div>
-                    <div className="text-deep-forest font-black text-xl md:text-3xl">Uganda</div>
-                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
-      </ScrollReveal>
 
       {/* Why Choose NIM */}
       <section className="py-section-padding bg-white">
@@ -551,7 +596,6 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-gutter text-center">
           <ScrollReveal>
           <h2 className="font-display-lg text-headline-lg text-deep-forest mb-4">Visit Our Facility</h2>
-          <p className="font-body-lg text-on-surface-variant mb-8">Plot 3789 Kinawataka Road, Kampala, Uganda</p>
           </ScrollReveal>
           <ScrollReveal delay={150}>
           <div className="rounded-2xl overflow-hidden shadow-lg border border-outline/10 max-w-4xl mx-auto mb-6">
@@ -565,17 +609,6 @@ export default function Home() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-          </ScrollReveal>
-          <ScrollReveal delay={250}>
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=NIM+Paints+Kinawataka+Rd+Kampala+Uganda"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-primary hover:bg-leaf-green text-on-primary font-bold uppercase tracking-[0.2em] text-xs px-8 py-4 rounded-lg transition-all shadow-lg"
-          >
-            <span className="material-symbols-outlined text-lg">directions</span>
-            Navigate to NIM Paints
-          </a>
           </ScrollReveal>
         </div>
       </section>

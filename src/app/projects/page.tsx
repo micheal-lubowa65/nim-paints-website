@@ -1,7 +1,7 @@
 ﻿"use client";
 
-import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -91,23 +91,53 @@ const categories = ["All Projects", "Commercial", "Institutional", "Residential"
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All Projects");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const filteredProjects =
     activeCategory === "All Projects"
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  const total = filteredProjects.length;
+
+  const clampIndex = useCallback(
+    (i: number) => {
+      if (total === 0) return 0;
+      return ((i % total) + total) % total;
+    },
+    [total],
+  );
+
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
-  }, [filteredProjects.length]);
+    setCurrentIndex((prev) => clampIndex(prev + 1));
+  }, [clampIndex]);
 
   const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
-  }, [filteredProjects.length]);
+    setCurrentIndex((prev) => clampIndex(prev - 1));
+  }, [clampIndex]);
 
-  const getSlideIndex = (offset: number) => {
-    return (currentIndex + offset + filteredProjects.length) % filteredProjects.length;
-  };
+  const goTo = useCallback(
+    (i: number) => setCurrentIndex(clampIndex(i)),
+    [clampIndex],
+  );
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    if (total > 1) {
+      timerRef.current = setInterval(nextSlide, 5000);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [nextSlide, total]);
+
+  const prevIndex = clampIndex(currentIndex - 1);
+  const nextIndex = clampIndex(currentIndex + 1);
+
+  const current = filteredProjects[currentIndex];
+  const prev = filteredProjects[prevIndex];
+  const next = filteredProjects[nextIndex];
 
   return (
     <div className="-mt-20">
@@ -187,56 +217,87 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Carousel — full width landscape images */}
-          <div className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] mb-12">
-            {/* Left adjacent */}
-            <div
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block relative"
-              onClick={prevSlide}
-            >
-              <Image src={filteredProjects[getSlideIndex(-1)]?.img ?? ""} alt="" fill sizes="25vw" className="object-contain bg-neutral-900" />
-              <div className="absolute inset-0 bg-white/30"></div>
-            </div>
-
-            {/* Center card (active) — full width on mobile, 60% on desktop */}
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-full md:w-[60%] h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl z-10"
-            >
-              <Image src={filteredProjects[currentIndex]?.img ?? ""} alt={filteredProjects[currentIndex]?.title ?? ""} fill sizes="60vw" className="object-contain object-center bg-neutral-900" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 md:p-8">
-                <h3 className="text-white font-bold text-base md:text-xl mb-1">{filteredProjects[currentIndex]?.title}</h3>
-                <p className="text-white/60 text-xs md:text-sm">{filteredProjects[currentIndex]?.location}</p>
+          {/* Carousel */}
+          {total > 0 && (
+            <div className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] mb-12">
+              {/* Left adjacent */}
+              <div
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
+                onClick={prevSlide}
+              >
+                {prev && (
+                  <Image src={prev.img} alt="" fill sizes="25vw" className="object-cover bg-neutral-900" />
+                )}
+                <div className="absolute inset-0 bg-white/30"></div>
               </div>
-            </motion.div>
 
-            {/* Right adjacent */}
-            <div
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block relative"
-              onClick={nextSlide}
-            >
-              <Image src={filteredProjects[getSlideIndex(1)]?.img ?? ""} alt="" fill sizes="25vw" className="object-contain bg-neutral-900" />
-              <div className="absolute inset-0 bg-white/30"></div>
+              {/* Center card */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${activeCategory}-${currentIndex}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-full md:w-[60%] h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl z-10"
+                >
+                  {current && (
+                    <Image src={current.img} alt={current.title} fill sizes="60vw" className="object-cover object-center bg-neutral-900" />
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 md:p-8">
+                    <h3 className="text-white font-bold text-base md:text-xl mb-1">{current?.title}</h3>
+                    <p className="text-white/60 text-xs md:text-sm">{current?.location}</p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Right adjacent */}
+              <div
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
+                onClick={nextSlide}
+              >
+                {next && (
+                  <Image src={next.img} alt="" fill sizes="25vw" className="object-cover bg-neutral-900" />
+                )}
+                <div className="absolute inset-0 bg-white/30"></div>
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Navigation arrows */}
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={prevSlide}
-              className="w-11 h-11 border border-deep-forest/20 rounded-full flex items-center justify-center text-deep-forest hover:bg-deep-forest hover:text-white transition-all cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-lg">arrow_back</span>
-            </button>
-            <button
-              onClick={nextSlide}
-              className="w-11 h-11 border border-deep-forest/20 rounded-full flex items-center justify-center text-deep-forest hover:bg-deep-forest hover:text-white transition-all cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-lg">arrow_forward</span>
-            </button>
+          {/* Navigation arrows + dots */}
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={prevSlide}
+                className="w-11 h-11 border border-deep-forest/20 rounded-full flex items-center justify-center text-deep-forest hover:bg-deep-forest hover:text-white transition-all cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-lg">arrow_back</span>
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-11 h-11 border border-deep-forest/20 rounded-full flex items-center justify-center text-deep-forest hover:bg-deep-forest hover:text-white transition-all cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-lg">arrow_forward</span>
+              </button>
+            </div>
+            {/* Dot indicators */}
+            {total > 1 && total <= 15 && (
+              <div className="flex gap-2">
+                {filteredProjects.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goTo(i)}
+                    className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
+                      i === currentIndex ? "bg-deep-forest w-6" : "bg-deep-forest/20 hover:bg-deep-forest/40"
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+            <p className="text-on-surface-variant/50 text-xs font-medium">
+              {currentIndex + 1} / {total}
+            </p>
           </div>
         </div>
       </section>

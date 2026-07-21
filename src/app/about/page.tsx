@@ -218,7 +218,7 @@ export default function About() {
           <ScrollReveal delay={150}>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a href="/contact#inquiry-form" className="bg-white text-leaf-green font-label-lg px-10 py-5 rounded-lg hover:bg-surface-gray transition-all hover:shadow-lg active:scale-95 cursor-pointer inline-block">Request a Quote</a>
-            <button className="bg-deep-forest text-white font-label-lg px-10 py-5 rounded-lg hover:bg-black transition-all hover:shadow-lg active:scale-95 cursor-pointer">Speak to an Expert</button>
+            <button className="bg-deep-forest text-white font-label-lg px-10 py-5 rounded-lg hover:bg-deep-forest/80 transition-all hover:shadow-lg active:scale-95 cursor-pointer">Speak to an Expert</button>
           </div>
           </ScrollReveal>
         </div>

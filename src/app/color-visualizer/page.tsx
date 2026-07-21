@@ -150,13 +150,6 @@ export default function ColorVisualizer() {
                     <p className="text-[10px] font-mono text-on-surface-variant/40 mt-0.5">{p.hex}</p>
                   </button>
                 ))}
-                <button className="group text-left p-4 rounded-xl border-2 border-dashed border-outline/30 bg-white/40 hover:border-leaf-green transition-all cursor-pointer">
-                  <div className="w-full aspect-square rounded-lg mb-3 flex items-center justify-center bg-surface-container">
-                    <span className="material-symbols-outlined text-on-surface-variant/40">add</span>
-                  </div>
-                  <p className="font-bold text-sm text-on-surface-variant/60">Custom Mix</p>
-                  <p className="text-[10px] text-on-surface-variant/40 uppercase tracking-widest font-bold">Request Quote</p>
-                </button>
               </div>
 
               {/* Quick Actions */}

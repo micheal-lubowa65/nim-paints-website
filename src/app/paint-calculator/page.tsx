@@ -8,7 +8,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 interface RoomDimensions {
   length: number;
   width: number;
-  height: number;
   doors: number;
   windows: number;
 }
@@ -19,14 +18,14 @@ const WINDOW_AREA = 1.2;
 export default function PaintCalculator() {
   const [projectType, setProjectType] = useState<"interior" | "exterior">("interior");
   const [rooms, setRooms] = useState<RoomDimensions[]>([
-    { length: 5, width: 4, height: 2.7, doors: 1, windows: 1 },
+    { length: 5, width: 4, doors: 1, windows: 1 },
   ]);
   const [selectedProduct, setSelectedProduct] = useState(products[0]);
   const [coats, setCoats] = useState(2);
   const [result, setResult] = useState<{ totalArea: number; litres: number; tins: { size: number; count: number }[] } | null>(null);
 
   const addRoom = () => {
-    setRooms([...rooms, { length: 5, width: 4, height: 2.7, doors: 1, windows: 1 }]);
+    setRooms([...rooms, { length: 5, width: 4, doors: 1, windows: 1 }]);
   };
 
   const removeRoom = (i: number) => {
@@ -41,10 +40,9 @@ export default function PaintCalculator() {
   const calculate = () => {
     let totalArea = 0;
     for (const room of rooms) {
-      const wallArea = 2 * (room.length + room.width) * room.height;
-      const ceilingArea = projectType === "interior" ? room.length * room.width : 0;
+      const area = room.length * room.width;
       const deductions = room.doors * DOOR_AREA + room.windows * WINDOW_AREA;
-      totalArea += Math.max(0, wallArea + ceilingArea - deductions);
+      totalArea += Math.max(0, area - deductions);
     }
     const litres = (totalArea * coats) / selectedProduct.coverage;
     const totalLitres = Math.ceil(litres);
@@ -142,11 +140,10 @@ export default function PaintCalculator() {
                       </button>
                     )}
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 gap-4">
                     {([
                       { key: "length", label: "Length (m)", min: 1, step: 0.1 },
                       { key: "width", label: "Width (m)", min: 1, step: 0.1 },
-                      { key: "height", label: "Height (m)", min: 1, step: 0.1 },
                       { key: "doors", label: "Doors", min: 0, step: 1 },
                       { key: "windows", label: "Windows", min: 0, step: 1 },
                     ] as const).map((field) => (
