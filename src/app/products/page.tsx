@@ -22,7 +22,7 @@ export default function Products() {
       {/* Hero Section */}
       <section className="relative h-[70vh] w-full overflow-hidden bg-deep-forest">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#4A1A8A] via-[#6820B8] to-[#3D0E70]"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#069494] via-[#058080] to-[#046666]"></div>
         </div>
 
         <div className="hero-content px-gutter">
@@ -109,10 +109,12 @@ export default function Products() {
                   <Link href={`/products/${product.slug}`} className="group block">
                     <div className="bg-[#f8f8f6] rounded-3xl p-4 mb-4 overflow-hidden">
                       <div className="relative aspect-square rounded-2xl overflow-hidden">
-                        <img
+                        <Image
                           src={product.img}
                           alt={product.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-contain group-hover:scale-105 transition-transform duration-500"
                         />
                         <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium px-3 py-1 rounded-full">
                           {product.badge}

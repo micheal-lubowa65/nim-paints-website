@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "@/data/products";
 import ScrollReveal from "@/components/ScrollReveal";
 import type { Metadata } from "next";
@@ -54,8 +55,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-[80vw] sm:w-[280px] h-[80vw] sm:h-[280px] md:w-[320px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl bg-white/5">
-                <img src={product.img} alt={product.title} className="w-full h-full object-contain" />
+              <div className="relative w-[80vw] sm:w-[280px] h-[80vw] sm:h-[280px] md:w-[320px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl bg-white/5">
+                <Image src={product.img} alt={product.title} fill sizes="(max-width: 640px) 80vw, 320px" className="object-contain" />
               </div>
             </div>
           </div>
@@ -125,8 +126,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="grid md:grid-cols-2 gap-8">
               {relatedProducts.map((rp) => (
                 <Link key={rp.slug} href={`/products/${rp.slug}`} className="group flex items-center gap-8 p-8 bg-surface-container-lowest rounded-2xl hover:shadow-lg transition-all">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0">
-                    <img src={rp.img} alt={rp.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+                    <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0">
+                    <Image src={rp.img} alt={rp.title} fill sizes="96px" className="object-contain group-hover:scale-105 transition-transform" />
                   </div>
                   <div className="flex-1">
                     <span className={`text-xs font-bold uppercase tracking-widest ${rp.badgeColor}`}>{rp.badge}</span>

@@ -191,10 +191,10 @@ export default function Projects() {
           <div className="relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] mb-12">
             {/* Left adjacent */}
             <div
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block relative"
               onClick={prevSlide}
             >
-              <img src={filteredProjects[getSlideIndex(-1)]?.img} alt="" className="w-full h-full object-contain bg-neutral-900" />
+              <Image src={filteredProjects[getSlideIndex(-1)]?.img ?? ""} alt="" fill sizes="25vw" className="object-contain bg-neutral-900" />
               <div className="absolute inset-0 bg-white/30"></div>
             </div>
 
@@ -206,7 +206,7 @@ export default function Projects() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 w-full md:w-[60%] h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl z-10"
             >
-              <img src={filteredProjects[currentIndex]?.img} alt={filteredProjects[currentIndex]?.title} className="w-full h-full object-contain object-center bg-neutral-900" />
+              <Image src={filteredProjects[currentIndex]?.img ?? ""} alt={filteredProjects[currentIndex]?.title ?? ""} fill sizes="60vw" className="object-contain object-center bg-neutral-900" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 md:p-8">
                 <h3 className="text-white font-bold text-base md:text-xl mb-1">{filteredProjects[currentIndex]?.title}</h3>
                 <p className="text-white/60 text-xs md:text-sm">{filteredProjects[currentIndex]?.location}</p>
@@ -215,10 +215,10 @@ export default function Projects() {
 
             {/* Right adjacent */}
             <div
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-[25%] h-[70%] rounded-2xl overflow-hidden z-[2] cursor-pointer hidden md:block relative"
               onClick={nextSlide}
             >
-              <img src={filteredProjects[getSlideIndex(1)]?.img} alt="" className="w-full h-full object-contain bg-neutral-900" />
+              <Image src={filteredProjects[getSlideIndex(1)]?.img ?? ""} alt="" fill sizes="25vw" className="object-contain bg-neutral-900" />
               <div className="absolute inset-0 bg-white/30"></div>
             </div>
           </div>

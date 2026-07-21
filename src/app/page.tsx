@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
 import { textures } from "@/data/colors";
+import ProcessTimeline from "@/components/ProcessTimeline";
 
 const heroSlides = [
   {
@@ -43,14 +44,6 @@ const testimonials = [
   { name: "Dan", text: "NIM Paints delivered ahead of schedule for our office complex project. Their technical team was on-site throughout, ensuring proper application. The 15-year warranty gives us peace of mind." },
 ];
 
-const processSteps = [
-  { title: "Inquiry", desc: "Expert consultation to identify your specific coating requirements." },
-  { title: "Site Visit", desc: "Professional assessment of substrate conditions and environmental factors." },
-  { title: "Payments", desc: "Transparent pricing with flexible payment solutions for projects of all sizes." },
-  { title: "Delivery", desc: "Timely logistics ensuring factory-fresh products arrive at your site." },
-  { title: "Painting", desc: "Certified application supervised by technical specialists for precision." },
-  { title: "Handover", desc: "Quality certification and final walkthrough of your transformed space." },
-];
 
 const faqs = [
   { q: "Long-term performance warranty?", a: "Our premium exterior paint carries a 15-year performance warranty when applied by certified professionals. Interior luxury finishes maintain integrity for up to 20 years with proper maintenance." },
@@ -296,66 +289,7 @@ export default function Home() {
       </ScrollReveal>
 
       {/* Process Section */}
-      <section className="relative py-section-padding overflow-hidden bg-gradient-to-br from-slate-800/40 via-deep-forest/12 to-slate-700/20">
-        {/* Decorative elements (reduced intensity) */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-leaf-green/4 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-flame-gold/4 rounded-full blur-3xl -ml-48 -mb-48"></div>
-        
-        <div className="max-w-container-max mx-auto px-gutter relative z-10">
-            <ScrollReveal>
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6 mb-20 md:mb-28">
-              <div>
-                <h2 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-                  Our Process<br />and Timeline
-                </h2>
-              </div>
-              <p className="text-white drop-shadow text-base md:text-lg max-w-md leading-relaxed lg:pt-4 font-medium">
-                From inquiry to handover, each step is focused on delivering premium results with transparency and precision at every stage.
-              </p>
-            </div>
-            </ScrollReveal>
-
-          {/* Process Timeline */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
-            {processSteps.map((step, i) => {
-              const colors = [
-                { bg: "from-blue-500 to-cyan-500", light: "from-blue-400/20 to-cyan-400/20", text: "text-blue-100", accent: "bg-blue-500" },
-                { bg: "from-emerald-500 to-green-500", light: "from-emerald-400/20 to-green-400/20", text: "text-emerald-100", accent: "bg-emerald-500" },
-                { bg: "from-orange-500 to-red-500", light: "from-orange-400/20 to-red-400/20", text: "text-orange-100", accent: "bg-orange-500" },
-                { bg: "from-purple-500 to-pink-500", light: "from-purple-400/20 to-pink-400/20", text: "text-purple-100", accent: "bg-purple-500" },
-                { bg: "from-amber-500 to-orange-500", light: "from-amber-400/20 to-orange-400/20", text: "text-amber-100", accent: "bg-amber-500" },
-                { bg: "from-rose-500 to-red-600", light: "from-rose-400/20 to-red-400/20", text: "text-rose-100", accent: "bg-rose-500" },
-              ];
-              const color = colors[i];
-
-              return (
-                <ScrollReveal key={step.title} delay={i * 100}>
-                  <div className={`group relative h-full overflow-hidden rounded-2xl bg-gradient-to-br ${color.bg} p-0.5 transition-all duration-500 hover:shadow-2xl hover:shadow-white/10`}>
-                    {/* Animated border */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    <div className={`relative h-full rounded-[15px] bg-gradient-to-br ${color.light} backdrop-blur-xl border border-white/10 p-6 md:p-8 flex flex-col`}>
-                      {/* Animated number badge */}
-                      <div className={`inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full ${color.accent} text-white text-lg md:text-xl font-bold mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                        {i + 1}
-                      </div>
-
-                      {/* Title */}
-                      <h4 className={`font-display-lg text-xl md:text-2xl ${color.text} mb-3 md:mb-4 font-bold tracking-tight`}>{step.title}</h4>
-
-                      {/* Description */}
-                      <p className={`text-white/70 text-sm md:text-base leading-relaxed flex-grow`}>{step.desc}</p>
-
-                      {/* Decorative corner accent */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <ProcessTimeline />
 
       {/* Legacy Section */}
       <ScrollReveal>
@@ -422,10 +356,12 @@ export default function Home() {
                 
                 <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-deep-forest to-slate-900 shadow-2xl border-2 border-white/10">
                   {/* Image container with overlay */}
-                  <img 
-                    alt="NIM Paints Premium Paint Tin" 
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
-                    src="/paint%20bukcets.png" 
+                  <Image
+                    alt="NIM Paints Premium Paint Tin"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                    src="/paint%20bukcets.png"
                   />
                   
                   {/* Gradient overlay for depth */}
